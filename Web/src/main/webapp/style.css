@@ -1,0 +1,192 @@
+@font-face {
+  font-family: Shanghai;
+  src: url(shanghai.ttf);
+}
+
+html, body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  display: grid;
+  place-items: center;
+}
+
+.bg {
+  position: fixed;
+  inset: -20px;
+  z-index: -1;
+  background: url(background.jpg) center / cover;
+  filter: blur(5px);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1.5rem;
+}
+
+[hidden] {
+  display: none;
+}
+
+h1, h2, .author {
+  margin: 0;
+  font-family: Shanghai, serif;
+  font-weight: normal;
+  text-transform: uppercase;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+}
+
+h1 {
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+  color: red;
+  font-size: clamp(3.5rem, 16vw, 5.5rem);
+  animation: fade 5s;
+}
+
+h1 img {
+  width: 0.8em;
+  height: 0.8em;
+}
+
+h2, .author {
+  color: yellow;
+  font-size: clamp(1.6rem, 7vw, 2.2rem);
+}
+
+h2 {
+  margin-top: 0.4rem;
+}
+
+.author {
+  margin-top: 3rem;
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+}
+
+.row {
+  display: flex;
+  gap: 0.6rem;
+}
+
+/* JavaFX "Modena" look */
+button {
+  min-width: 6rem;
+  padding: 0.55rem 1rem;
+  font: inherit;
+  color: #333;
+  background: linear-gradient(#fbfbfb, #e2e2e2);
+  border: 1px solid #a8a8a8;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: linear-gradient(#fff, #ebebeb);
+}
+
+button:focus-visible {
+  outline: 2px solid #039ed3;
+  outline-offset: 1px;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+#load {
+  margin-top: 1rem;
+  min-width: 10rem;
+}
+
+.music {
+  position: fixed;
+  top: 0.75rem;
+  right: 0.75rem;
+  min-width: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  font-size: 1.3rem;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.music.on {
+  opacity: 1;
+}
+
+#game {
+  background: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  padding: clamp(0.75rem, 3vw, 1.5rem);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  width: min(88vw, 70dvh, 480px);
+}
+
+/* one 3x3 box of the board */
+.board div {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3px;
+}
+
+.board input {
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 1;
+  box-sizing: border-box;
+  padding: 0;
+  text-align: center;
+  font: inherit;
+  font-size: clamp(1rem, 4.5vw, 1.4rem);
+  color: #1565c0;
+  background: #fff;
+  border: 1px solid #c8c8c8;
+  border-radius: 3px;
+  caret-color: transparent;
+}
+
+.board input:read-only {
+  color: #222;
+  font-weight: 600;
+  background: #ececec;
+}
+
+.board input:focus {
+  outline: 2px solid #039ed3;
+  outline-offset: -1px;
+}
+
+dialog {
+  min-width: 16rem;
+  text-align: center;
+  border: 1px solid #a8a8a8;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+dialog h3 {
+  margin-top: 0;
+}

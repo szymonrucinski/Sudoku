@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sudoku</title>
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <div class="bg"></div>
+  <button id="music" class="music" aria-label="Music" title="Music">♪</button>
+
+  <main id="menu">
+    <h1><img src="logo.png" alt="">Sudoku</h1>
+    <h2 data-t="difficulty">Difficulty</h2>
+    <div class="row">
+      <button data-level="0" data-t="b2">Easy</button>
+      <button data-level="1" data-t="b3">Medium</button>
+      <button data-level="2" data-t="b4">Hard</button>
+    </div>
+    <h2 data-t="languages">Languages</h2>
+    <div class="row">
+      <button data-lang="pl" data-t="b5">Polish</button>
+      <button data-lang="en" data-t="b6">English</button>
+    </div>
+    <button id="load" data-t="b7">Run Saved Game</button>
+    <p class="author">by Szymon Rucinski</p>
+  </main>
+
+  <main id="game" hidden>
+    <div id="board" class="board"></div>
+    <div class="row">
+      <button id="check" data-t="verifyButton">Check</button>
+      <button id="back" data-t="homeButton">Back</button>
+      <button id="save" data-t="saveGame">Save</button>
+    </div>
+  </main>
+
+  <dialog id="msg">
+    <h3></h3>
+    <p></p>
+    <form method="dialog"><button data-t="ok">I understand!</button></form>
+  </dialog>
+</body>
+</html>

@@ -1,5 +1,6 @@
 Model/target/*
 View/target/*
+Web/target/*
 *.log
 *.iml
 Solution.dat

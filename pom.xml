@@ -53,6 +53,7 @@
     <modules>
         <module>Model</module>
         <module>View</module>
+        <module>Web</module>
     </modules>
 
     <properties>

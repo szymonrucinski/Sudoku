@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>pl.comp</groupId>
+        <artifactId>SudokuGameProject</artifactId>
+        <version>0.5</version>
+    </parent>
+
+    <!-- Browser version: TeaVM compiles the Model (and SudokuWeb) to JavaScript,
+         the page in src/main/webapp replaces the JavaFX View. Output: target/site -->
+    <groupId>pl.comp.web</groupId>
+    <artifactId>Web</artifactId>
+    <version>0.5</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <teavm.version>0.16.0</teavm.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>pl.comp.model</groupId>
+            <artifactId>Model</artifactId>
+            <version>0.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.teavm</groupId>
+            <artifactId>teavm-classlib</artifactId>
+            <version>${teavm.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.teavm</groupId>
+            <artifactId>teavm-jso</artifactId>
+            <version>${teavm.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.teavm</groupId>
+                <artifactId>teavm-maven-plugin</artifactId>
+                <version>${teavm.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>pl.comp.web.SudokuWeb</mainClass>
+                            <targetDirectory>${project.build.directory}/site</targetDirectory>
+                            <targetFileName>sudoku.js</targetFileName>
+                            <jsModuleType>ES2015</jsModuleType>
+                            <optimizationLevel>ADVANCED</optimizationLevel>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                    <execution>
+                        <id>copy-site</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/site</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/webapp</directory>
+                                </resource>
+                                <resource>
+                                    <directory>../resources</directory>
+                                    <includes>
+                                        <include>background.jpg</include>
+                                        <include>logo.png</include>
+                                        <include>shanghai.ttf</include>
+                                        <include>audio.mp3</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
